@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Xara Cloud's Input page</title>
+<link rel="stylesheet" type="text/css" href="./input.css">
+</head>
+
+<body> 
+
+    <div id="cardPreview" style="background-image: url('./')"></div>
+    
+    
+    <div id="header">
+        <h1 class="" id="backgroundInstructions" onclick="goToStep( 'background' )">Choose your E-card's Background:</h1>
+        <h1 class="hidden" id="cardInstructions" onclick="goToStep( 'card' )">Choose your card design:</h1>
+        <h1 class="hidden" id="infoInstructions">Include your message:</h1>
+        <a href="https://www.xara.com">
+            <div id="madeby">
+                <div >Made by the guys at </div>
+                <div id="xara-logo"></div>
+            </div>
+        </a>
+    </div>
+
+    <div class="button" id="toInfo" onclick="goToStep( 'info' )">Add your message...</div>
+    <div class="button" id="toCards" onclick="goToStep( 'card' )">Choose a card design...</div>
+
+
+    
+
+
+
+    <form id="createCardForm" action="fileupload" method="post" enctype="multipart/form-data">
+
+<!-- information -->
+    <div class="hidden" id="form">
+
+        <label id="addComp" for="imgupload">Click to add your company logo
+            </label>
+            <input id="imgupload" type="file" name="filetoupload">
+        <img id="preview" src="">
+
+        
+        <label id="emailLabel">Add your email address:</label><br>
+        <input id="emailInput" type="text" name="email" value="" required><br><br>
+
+        
+        <label id="compLabel">Your companies URL:</label><br>
+        <input id="compInput" type="text" name="company" value="www.example.com"><br><br>
+
+        <label id="messageLabel">Your message:</label><br>
+        <textarea id="message" name="message" rows="10" cols="30">I would just like to say thank you all for a fantastic year, and we look forward to a better one next year!
+
+                Boss,                        www.example.com
+                                    
+        </textarea><br><br>
+        
+        <label id="contactLabel">
+        <input id="contactCheck" type="checkbox" name="contact" checked>
+        Yes I would like to hear about more stuff from <a href="https://www.xara.com">Xara Cloud</a>
+    </label>
+
+    </div>
+        
+        <div class="button hidden" id="toSubmit">Get your e-card</div>
+
+<!-- card -->
+            <div class="hidden" id="card-picker">
+                <input type="radio" name="card" value="1" id="c1" checked> 
+                <label for="c1" class="bg">    
+                    <div class="card-images" style="background-image:url(./static/red.png)"></div>    
+                    <p class="bg-text">Hello world</p> 
+                </label>
+
+                <input type="radio" name="card" value="2" id="c2">
+                <label for="c2" class="bg">    
+                        <div class="card-images" style="background-image:url(./static/red.png)"></div>    
+                        <p class="bg-text">Hello world</p> 
+                    </label>
+                
+                <input type="radio" name="card" value="2" id="c3">
+                
+                <label for="c3" class="bg">    
+                        <div class="card-images" style="background-image:url(./static/red.png)"></div>    
+                        <p class="bg-text">Hello world</p> 
+                    </label>
+                <input type="radio" name="card" value="2" id="c4">
+
+                <label for="c4" class="bg">    
+                        <div class="card-images" style="background-image:url(./static/red.png)"></div>    
+                        <p class="bg-text">Hello world</p> 
+                    </label>
+                <input type="radio" name="card" value="2" id="c5">
+
+                <label for="c5" class="bg">    
+                        <div class="card-images" style="background-image:url(./static/red.png)"></div>    
+                        <p class="bg-text">Hello world</p> 
+                    </label>
+            </div>
+
+
+<!-- background -->
+<div class="" id="background-picker">
+        <input type="radio" name="background" value="1" id="b1" checked> 
+        <label for="b1" class="bg">    
+            <div class="bg-images" style="background-image:url(./static/red.png)"></div>    
+            <p class="bg-text">Hello world</p> 
+        </label>
+
+        <input type="radio" name="background" value="2" id="b2">
+        <label for="b2" class="bg">    
+                <div class="bg-images" style="background-image:url(./static/red.png)"></div>    
+                <p class="bg-text">Hello world</p> 
+            </label>
+        
+        <input type="radio" name="background" value="2" id="b3">
+        
+        <label for="b3" class="bg">    
+                <div class="bg-images" style="background-image:url(./static/red.png)"></div>    
+                <p class="bg-text">Hello world</p> 
+            </label>
+        <input type="radio" name="background" value="2" id="b4">
+
+        <label for="b4" class="bg">    
+                <div class="bg-images" style="background-image:url(./static/red.png)"></div>    
+                <p class="bg-text">Hello world</p> 
+            </label>
+        <input type="radio" name="background" value="2" id="b5">
+
+        <label for="b5" class="bg">    
+                <div class="bg-images" style="background-image:url(./static/red.png)"></div>    
+                <p class="bg-text">Hello world</p> 
+            </label>
+    </div>
+
+
+
+    </form>
+
+    <script src="input.js"></script>
+</body>
+</html>

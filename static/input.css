@@ -1,0 +1,440 @@
+html {
+    font-family: open sans;
+    font-size: 500;
+    color: white;
+    text-align : center;
+}
+
+body {
+    overflow: hidden;
+}
+
+#header {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:100%;
+    height: 350px;
+    background: linear-gradient(to bottom right,#007ec5 0,#08a5af 100%);
+    
+    -webkit-box-shadow: 0px 10px 30px -9px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 10px 30px -9px rgba(0,0,0,0.75);
+    box-shadow: 0px 10px 30px -9px rgba(0,0,0,0.75);
+}
+
+#header h1 {
+    position:absolute;
+    top: 50px;
+    left: 50px;
+    font-size: 24px;
+    font-weight: 400;
+    transform-origin: top left;
+    transition: transform 0.5s;
+    cursor: pointer;
+    
+}
+
+.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+#backgroundInstructions.inactive {
+
+    transform : translateY(-50px) scale(0.7);
+    opacity:0.7;
+}
+#cardInstructions.inactive {
+    
+    transform : translateY(-25px) scale(0.7);
+    opacity:0.7;
+}
+
+#cardPreview {
+    position:absolute;
+    left:0px;
+    top:350px;
+    width:100%;
+    height: calc(100vh - 350px);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50%;
+}
+/*
+#actualCardPreview{
+    position:absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    margin: auto;
+    height: 80%;
+}
+*/
+
+#xara-logo {
+    margin:auto;
+    margin-top: 5px;
+    width: 160px;
+    height: 60px;
+    background-image:url(./XCLOGO.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+
+#madeby {
+    position:absolute;
+    top:10px;
+    right:50px;
+    cursor: pointer;
+    color: white;
+    text-decoration: none; /* no underline */
+}
+
+.button {
+    position:absolute;
+    border-radius: 50px;
+    background-color:#9ac432;
+    color: white;
+    font-size: 20px;
+    padding: 15px;
+    padding-left: 30px;
+    padding-right: 30px;
+    top: 280px;
+    left: calc(50%);
+    transform: translateX(-50%);
+    cursor: pointer;
+    text-decoration: none; /* no underline */
+}
+
+
+#background-picker {
+    position:absolute;
+    min-width: 100%;
+    height: 150px;
+    top:120px;
+    left:0px;
+    white-space: nowrap;
+    transition: opacity 0.5s, left 1s;
+}
+
+
+#background-picker > input{
+        margin:0;padding:0;
+        -webkit-appearance:none;
+           -moz-appearance:none;
+                appearance:none;
+} 
+
+
+#background-picker > label{
+    display: inline-block;
+    width: 213px;
+    height: 150px;
+    /*background-color: black;*/
+    margin-left: 25px;
+    cursor: pointer;
+}
+
+.bg-images {
+    transition: border 0.25s, box-shadow 0.25s;
+    width: 100%;
+    height: 120px;
+    border: 1px solid transparent;
+    background-size: 100%;
+    background-repeat: no-repeat;
+
+}
+#background-picker > input:checked +label > .bg-images {
+    border:1px solid white;
+    -webkit-box-shadow: 7px 10px 30px -9px rgba(0,0,0,0.75);
+-moz-box-shadow: 7px 10px 30px -9px rgba(0,0,0,0.75);
+box-shadow: 7px 10px 30px -9px rgba(0,0,0,0.75);
+
+}
+
+.bg-text {
+    font-weight: 500;
+    width: 100%;
+    transform: translateY(-50%);
+}
+
+
+
+
+
+
+#card-picker {
+    position:absolute;
+    min-width: 100%;
+    height: 150px;
+    top:120px;
+    left:0px;
+    white-space: nowrap;
+    transition: opacity 0.5s, left 1s;
+}
+
+
+#card-picker > input{
+        margin:0;padding:0;
+        -webkit-appearance:none;
+           -moz-appearance:none;
+                appearance:none;
+} 
+
+
+#card-picker > label{
+    display: inline-block;
+    width: 120px;
+    height: 150px;
+    /*background-color: black;*/
+    margin-left: 25px;
+    cursor: pointer;
+}
+
+.card-images {
+    transition: border 0.25s, box-shadow 0.25s;
+    width: 100%;
+    height: 120px;
+    border: 1px solid transparent;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+}
+#card-picker > input:checked +label > .card-images {
+    border:1px solid white;
+    -webkit-box-shadow: 7px 10px 30px -9px rgba(0,0,0,0.75);
+-moz-box-shadow: 7px 10px 30px -9px rgba(0,0,0,0.75);
+box-shadow: 7px 10px 30px -9px rgba(0,0,0,0.75);
+
+}
+
+.card-text {
+    font-weight: 500;
+    width: 100%;
+    transform: translateY(-50%);
+}
+
+
+
+#form {
+    position: absolute;
+    width: 900px;
+    height: 200px;
+    top: 100px;
+    left: 0px;
+    right: 0px;
+    margin: auto
+}
+
+
+#addComp {
+    position: absolute;
+    left: 50px;
+    top: 10px;
+    width: 250px;
+    height: 1em;
+    border: 4px dashed white;
+    border-radius: 20px;
+    padding: 50px 20px;
+}
+
+#imgupload {
+    opacity:0;
+    margin:0;padding:0;
+    -webkit-appearance:none;
+       -moz-appearance:none;
+            appearance:none;
+}
+
+#preview{
+    position: absolute;
+    left: 50px;
+    top: 10px;
+    max-width: 300px;
+    max-height: 150px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+#emailInput{
+    top: 35px;
+    position: absolute;
+    left: 390px;
+    width: 200px;
+}
+
+#emailLabel {
+    position: absolute;
+    top: 10px;
+    left: 390px;
+}
+
+#compLabel {
+    position: absolute;
+    left: 390px;
+    top: 70px;
+}
+#compInput {
+    top: 95px;
+    position: absolute;
+    left: 390px;
+    width: 200px;
+}
+
+#messageLabel {
+    position: absolute;
+    left: 650px;
+    top: 10px;
+}
+
+#message {
+    top: 35px;
+    position: absolute;
+    left: 650px;
+    width: 200px;
+    height: 75px;
+    overflow: hidden;
+}
+
+#contactLabel {
+    position: absolute;
+    top: 140px;
+    left: 390px;
+}
+
+
+#sharePanel {
+    position: absolute;
+    width: 100px;
+    height:100px;
+    top:0px;
+    bottom:0px;
+    left:0px;
+    right:0px;
+    margin:auto;
+    background-color: black;
+    display: none;
+}
+
+#cover {
+    top:0px;
+    left:0px;
+    position:absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: none;
+}
+
+#actualCardPreview-cover, #actualCardPreview-inside-left, #actualCardPreview-inside-right {
+    position:absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    margin: auto;
+    height: 75%;
+    transition: all 1s;
+    transform-origin: top left;
+    backface-visibility: hidden;
+}
+
+#actualCardPreview-inside-left{
+    transform-origin: top right;
+    transform: translateX(calc(-100% + 1px)) rotateY(180deg);
+
+
+}
+
+#actualCardPreview-cover.open {
+    transform : translateX(50%) rotateY(180deg) !important;
+
+}
+
+#actualCardPreview-inside-left.open {
+    transform: translateX(calc(-50% + 1px)) rotateY(360deg);
+    border-right: 1px solid rgba(0,0,0,0.3);
+
+}
+
+#actualCardPreview-inside-right.open {
+    transform: translateX(calc(50% - 1px));
+
+}
+
+/*
+        <h2>Share your e-card</h2>
+        <p "publishedTo">Your e-card is published to here:</p>
+        <p id="cardURL">UNDEFINED</p>
+        <hr>
+        <p id="shareTo">Share to:</p>
+        <div id="facebook"></div><div id="twitter"></div>
+        
+        <hr>
+        <p id="emailTo">EMAIL: not yet supported</p>
+
+
+*/
+
+#sharePanel {
+    position: absolute;
+    width: 550px;
+    height: 300px;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    margin: auto;
+    background-color: #f8f9fb;
+    display: none;
+    font-family: open sans;
+    color: #41414b;
+    border-radius: 25px;
+    border: 1px solid rgba(0,0,0,0.5);
+    overflow: hidden;
+
+    
+    -webkit-box-shadow: 0px 10px 30px -9px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 10px 30px -9px rgba(0,0,0,0.75);
+    box-shadow: 0px 10px 30px -9px rgba(0,0,0,0.75);
+}
+
+h2 {
+    background-color: white;
+    padding: 15px;
+    margin: 0px;
+    font-weight: 400;
+}
+
+#publishedTo, #shareTo, #emailTo {
+    
+    text-align: left;
+    padding-left: 30px;
+}
+
+#cardURL {
+    background-color: #eee;
+    width: 60%;
+    overflow: hidden;
+    margin: auto;
+    border: 1px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 3px;
+    text-overflow: ellipsis;
+}
+
+#closeShare {
+    color: gray;
+    font-size: 26px;
+    height: 40px;
+    right: -2px;
+    position: absolute;
+    text-align: center;
+    top: 0px;
+    width: 40px;
+    cursor: pointer;
+}

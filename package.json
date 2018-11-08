@@ -1,0 +1,23 @@
+{
+  "name": "xe-card-generator",
+  "version": "0.1.0",
+  "description": "Easy E-card generator created by Xara Cloud team",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BenMoses/xe-card-generator.git"
+  },
+  "author": "Benjamin Moses",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BenMoses/xe-card-generator/issues"
+  },
+  "homepage": "https://github.com/BenMoses/xe-card-generator#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "formidable": "^1.2.1"
+  }
+}
