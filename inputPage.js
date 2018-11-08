@@ -3,7 +3,34 @@ module.exports.generateInputPage = function generateInputPage(backgroundFiles, c
  * How to checked the first el ${checked ? (checked = !checked , "checked") : ""}
  */
 
+    function editor(){
 
+    }
+
+    function effectStyle(){ 
+        return `
+        <style>
+            #effect-background, #effect-content, #effect-foreground {
+                width: 100%;
+                height:100%;
+                position:absolute;
+                left:0px;
+                top:0px;
+            };
+        </style>`
+    }
+    function effectScript(){
+
+
+
+        return `
+        <script>
+            var backgroundCanvas = document.getElementById("effect-background");
+            var bgCanvas = canvas.getContext("2d");
+            bgCanvas.fillStyle = "#FF0000";
+            bgCanvas.fillRect(0, 0, 80, 80);
+        </script>`
+    }
 
 
     function backgroundsLoop() {
@@ -58,14 +85,30 @@ module.exports.generateInputPage = function generateInputPage(backgroundFiles, c
 <meta charset="UTF-8">
 <title>Xara Cloud's Input page</title>
 <link rel="stylesheet" type="text/css" href="./input.css">
+${effectStyle()}
 </head>
 
 <body> 
 
     <div id="cardPreview">
         <img id="actualCardPreview-inside-right"></img>
+        <canvas id="effect-background"></canvas>
+                        <!--
+                        <div id="editor">
+                            <textArea id="textEditor">
+                            I would just like to say thank you all for a fantastic year, and we look forward to a better one next year!
+
+                                    Boss,                        www.example.com
+                                                        
+                            </textArea>
+                            <p id="signature">undefined</p>
+                            <img id="logoEditor" src=""></img>
+                        </div>
+                        -->
         <img id="actualCardPreview-inside-left"></img>
+        <canvas id="effect-content"></canvas>
         <img id="actualCardPreview-cover"></img>
+        <canvas id="effect-foreground"></canvas>
     </div>
     
     
@@ -154,6 +197,7 @@ module.exports.generateInputPage = function generateInputPage(backgroundFiles, c
 
     </div>
 
+    ${effectScript()}
     <script src="input.js"></script>
 </body>
 </html>`
