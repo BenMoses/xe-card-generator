@@ -4,7 +4,8 @@
   "description": "Easy E-card generator created by Xara Cloud team",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js"
   },
   "repository": {
     "type": "git",
@@ -18,6 +19,11 @@
   "homepage": "https://github.com/BenMoses/xe-card-generator#readme",
   "dependencies": {
     "express": "^4.16.4",
-    "formidable": "^1.2.1"
+    "formidable": "^1.2.1",
+    "mongodb": "^3.1.9",
+    "mongoose": "^5.3.10"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.6"
   }
 }

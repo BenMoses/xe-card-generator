@@ -64,6 +64,18 @@ app.get('/*', (req, res) => {
 })
 */
 
+
+
+var mongoose = require("mongoose");
+mongoose.Promise = global.Promise;
+mongoose.connect("mongodb://localhost:27017/cardusers");
+
+var nameSchema = new mongoose.Schema({
+    email: String
+  });
+var User = mongoose.model("User", nameSchema);
+
+
 app.post('/fileupload', (req, res) => {
 
     var form = new formidable.IncomingForm();
@@ -84,6 +96,22 @@ app.post('/fileupload', (req, res) => {
 
         var contact = !!fields.contact;
         var email = fields.email;
+
+
+        var data = new User({"email": email});
+        User.find({}, function(err,res){
+            if(err)console.log(err);
+            if(res)console.log(res);
+        })
+        data.save()
+          .then(item => {
+              //console.log(item)
+            console.log("item saved to database");
+          })
+          .catch(err => {
+              console.log('Error : ' + err);
+        });
+
         var message = fields.message;
         var company = fields.company;
         var background = fields.background;
