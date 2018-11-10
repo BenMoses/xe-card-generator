@@ -60,6 +60,58 @@ body {
     background-size: cover;
     background-position: 50%;
 }
+
+#insideCard {
+    position:absolute;
+    left:0px;
+    bottom:0px;
+    right:0px;
+    top:0px;
+    margin:auto;
+    height: 75%;
+    transition: transform 1s;
+    opacity: 0;
+}
+
+#insideCard.open {
+    transform: translateX(calc(50% - 1px));
+}
+
+#insideCard h4, #insideCard h5{
+    font-family: 'Mountains of Christmas', cursive;
+    font-size: 96px;
+    height: 42%;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    margin: 5%;
+    margin-top: 10%;
+    color: #b01c29;
+}
+#insideCard h5{
+    font-size: 36px;
+    height: 15%;
+    bottom: calc(5% + 100px);
+    position: absolute;
+    width:90%;
+    margin-bottom: 0px;
+    margin-top:0px;
+}
+
+
+#insideCard img{
+    height: 100px;
+    width: auto;
+    max-width: 100%;
+    bottom: 5%;
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    margin: auto;
+    /*display:none;*/
+}
+
 /*
 #actualCardPreview{
     position:absolute;
@@ -364,6 +416,7 @@ box-shadow: 7px 10px 30px -9px rgba(0,0,0,0.75);
     transform: translateX(calc(50% - 1px));
 
 }
+
 
 /*
         <h2>Share your e-card</h2>

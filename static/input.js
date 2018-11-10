@@ -100,6 +100,7 @@ function goToStep(option){
         document.querySelector('#toSubmit').classList = "button";
         document.querySelector('#infoInstructions').classList = "";
         document.querySelector('#form').classList = "";
+        document.querySelector('#insideCard').style.opacity = 1;//first time going to the info, make the inside card visible;
 
         //open card
         toggleCard(true);
@@ -113,10 +114,13 @@ function toggleCard(bool){
         document.querySelector('#actualCardPreview-cover').classList.add("open");
         document.querySelector('#actualCardPreview-inside-left').classList.add("open");
         document.querySelector('#actualCardPreview-inside-right').classList.add("open");
+        document.querySelector('#insideCard').classList.add("open");
+        
     }else{
         document.querySelector('#actualCardPreview-cover').classList.remove("open");
         document.querySelector('#actualCardPreview-inside-left').classList.remove("open");
         document.querySelector('#actualCardPreview-inside-right').classList.remove("open");
+        document.querySelector('#insideCard').classList.remove("open");
     }
 }
 
@@ -129,6 +133,7 @@ function updateImageDisplay(){
     var image = document.querySelector('#preview');
     image.style.opacity = 1;
     image.src = window.URL.createObjectURL(src[0]);
+    showCardLogo(window.URL.createObjectURL(src[0]));
     document.querySelector('#addComp').style.opacity = 0;
 
 
@@ -206,11 +211,35 @@ function toggleShare(bool){
 document.querySelector('#cover').addEventListener('click', function(){ toggleShare(false)});
 
 var cardState = false;
-document.querySelector('#cardPreview').addEventListener('click', function(){ 
+document.querySelector('#actualCardPreview-inside-left').addEventListener('click', function(){ 
     toggleCard(cardState)
     cardState = !cardState;
 });
 
+document.querySelector('#actualCardPreview-cover').addEventListener('click', function(){ 
+    toggleCard(cardState)
+    cardState = !cardState;
+});
+
+
 document.querySelector('#closeShare').addEventListener('click', function(){
     toggleShare(false)
 });
+
+var logoPrev = document.querySelector('#logoPreview');
+var logoShowing = true;
+var signature = document.querySelector('h5');
+
+document.querySelector('#logoPreview').addEventListener('click', function(){
+    logoPrev.style.display = "none";
+    signature.style.bottom = "calc(5% + 35px)";
+    logoShowing = !logoShowing;
+})
+
+function showCardLogo(src){
+    logoPrev.src = src;
+    logoPrev.style.display = "block";
+    signature.style.bottom = "calc(5% + 100px)";
+    logoShowing = !logoShowing;
+
+}

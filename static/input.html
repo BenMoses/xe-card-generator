@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Xara Cloud's Input page</title>
+    <link rel="stylesheet" type="text/css" href="./input.css">
+    <link href="https://fonts.googleapis.com/css?family=Mountains+of+Christmas" rel="stylesheet">
+</head>
+
+<body>
+
+    <div id="cardPreview">
+
+        <img id="actualCardPreview-inside-right"></img>
+        <div id="insideCard">
+            <h4 contentEditable>Click here to edit your message.
+            </h4>
+            <h5 contentEditable>and don't forget to sign it!</h4>
+                <img id="logoPreview"src="./removeLogo.png"></img>
+        </div>
+
+
+        <img id="actualCardPreview-inside-left"></img>
+        <img id="actualCardPreview-cover"></img>
+
+    </div>
+
+
+    <div id="header">
+        <h1 class="" id="backgroundInstructions" onclick="goToStep( 'background' )">Choose your E-card's Background:</h1>
+        <h1 class="hidden" id="cardInstructions" onclick="goToStep( 'card' )">Choose your card design:</h1>
+        <h1 class="hidden" id="infoInstructions">Include your message:</h1>
+        <a href="https://www.xara.com">
+            <div id="madeby">
+                <div>Made by the guys at </div>
+                <div id="xara-logo"></div>
+            </div>
+        </a>
+    </div>
+
+    <div class="button" id="toInfo" onclick="goToStep( 'info' )">Add your message...</div>
+    <div class="button" id="toCards" onclick="goToStep( 'card' )">Choose a card design...</div>
+
+
+
+
+
+
+    <form id="createCardForm" <!--action="fileupload" method="post" --> enctype="multipart/form-data">
+
+        <!-- information -->
+        <div class="hidden" id="form">
+
+            <label id="addComp" for="imgupload">Click to add your company logo
+            </label>
+            <input id="imgupload" type="file" name="filetoupload">
+            <img id="preview" src="">
+
+
+            <label id="emailLabel">Add your email address:</label>
+            <br>
+            <input id="emailInput" type="text" name="email" value="" required>
+            <br>
+            <br>
+
+
+            <label id="compLabel">Your companies URL:</label>
+            <br>
+            <input id="compInput" type="text" name="company" value="www.example.com">
+            <br>
+            <br>
+
+            <label id="messageLabel">Your message:</label>
+            <br>
+            <textarea id="message" name="message" rows="10" cols="30">I would just like to say thank you all for a fantastic year, and we look forward to a better one next year!
+
+                Boss,                        www.example.com
+                                    
+        </textarea>
+            <br>
+            <br>
+
+            <label id="contactLabel">
+                <input id="contactCheck" type="checkbox" name="contact" checked> Yes I would like to hear about more stuff from
+                <a href="https://www.xara.com">Xara Cloud</a>
+            </label>
+
+        </div>
+
+        <div class="button hidden" id="toSubmit" onclick="sendForm()">Get your e-card</div>
+
+        <!-- card -->
+        <div class="hidden" id="card-picker">
+            <input type="radio" name="card" value="christmas_trees_cover.png" id="christmas_trees_cover.png">
+            <label for="christmas_trees_cover.png" class="bg">
+                <div class="card-images" style="background-image:url(christmas_trees_cover.png)"></div>
+                <p class="bg-text">Christmas trees</p>
+            </label>
+            <input type="radio" name="card" value="merry_christmas_cover.png" id="merry_christmas_cover.png">
+            <label for="merry_christmas_cover.png" class="bg">
+                <div class="card-images" style="background-image:url(merry_christmas_cover.png)"></div>
+                <p class="bg-text">Merry christmas</p>
+            </label>
+        </div>
+
+
+        <!-- background -->
+        <div class="" id="background-picker">
+            <input type="radio" name="background" value="bokeh_lights.jpg" id="bokeh_lights.jpg">
+            <label for="bokeh_lights.jpg" class="bg">
+                <div class="bg-images" style="background-image:url(bokeh_lights.jpg)"></div>
+                <p class="bg-text">Bokeh lights</p>
+            </label>
+            <input type="radio" name="background" value="christmas_presents.jpg" id="christmas_presents.jpg">
+            <label for="christmas_presents.jpg" class="bg">
+                <div class="bg-images" style="background-image:url(christmas_presents.jpg)"></div>
+                <p class="bg-text">Christmas presents</p>
+            </label>
+            <input type="radio" name="background" value="gold_bauble.jpg" id="gold_bauble.jpg">
+            <label for="gold_bauble.jpg" class="bg">
+                <div class="bg-images" style="background-image:url(gold_bauble.jpg)"></div>
+                <p class="bg-text">Gold bauble</p>
+            </label>
+            <input type="radio" name="background" value="gold_lights.jpg" id="gold_lights.jpg">
+            <label for="gold_lights.jpg" class="bg">
+                <div class="bg-images" style="background-image:url(gold_lights.jpg)"></div>
+                <p class="bg-text">Gold lights</p>
+            </label>
+            <input type="radio" name="background" value="merry_xmas.jpg" id="merry_xmas.jpg">
+            <label for="merry_xmas.jpg" class="bg">
+                <div class="bg-images" style="background-image:url(merry_xmas.jpg)"></div>
+                <p class="bg-text">Merry xmas</p>
+            </label>
+            <input type="radio" name="background" value="silver_bauble.jpg" id="silver_bauble.jpg">
+            <label for="silver_bauble.jpg" class="bg">
+                <div class="bg-images" style="background-image:url(silver_bauble.jpg)"></div>
+                <p class="bg-text">Silver bauble</p>
+            </label>
+            <input type="radio" name="background" value="white_bauble.jpg" id="white_bauble.jpg">
+            <label for="white_bauble.jpg" class="bg">
+                <div class="bg-images" style="background-image:url(white_bauble.jpg)"></div>
+                <p class="bg-text">White bauble</p>
+            </label>
+            <input type="radio" name="background" value="wood_presents.jpg" id="wood_presents.jpg">
+            <label for="wood_presents.jpg" class="bg">
+                <div class="bg-images" style="background-image:url(wood_presents.jpg)"></div>
+                <p class="bg-text">Wood presents</p>
+            </label>
+        </div>
+
+
+    </form>
+
+
+    <div id="cover"></div>
+    <div id="sharePanel">
+        <div id="closeShare">x</div>
+        <h2>Share your e-card</h2>
+        <p id="publishedTo">Your e-card is published to here:</p>
+        <p id="cardURL">UNDEFINED</p>
+        <hr>
+        <p id="shareTo">Share to: not yet supported</p>
+        <div id="facebook"></div>
+        <div id="twitter"></div>
+
+        <hr>
+        <p id="emailTo">EMAIL: not yet supported</p>
+
+
+    </div>
+
+    <script src="input.js"></script>
+    <script>
+        function updateCardContent() {
+            var cardContent = document.querySelector('#insideCard');
+            cardContent.style.width = "" + cardContent.getBoundingClientRect().height + "px";
+        }
+        updateCardContent();
+        window.addEventListener('resize', updateCardContent)
+    </script>
+
+    <script>
+
+
+        function autofit(element) {
+            if(element.innerText == ""){
+                //if there is no text, exit immediately
+                return;
+            }
+            var size = parseInt(getComputedStyle(element).fontSize); //cache size
+
+            //increase till it is overflowing
+            while (!isOverflown(element)) {
+                element.style.fontSize = (size++) + "px";
+            }
+
+            //decrease until it isn't overflowing
+            while (isOverflown(element)) {
+                element.style.fontSize = (size--) + "px";
+            };
+        }
+
+        function initAutofit(element) {
+
+
+            isOverflown = function (element) {
+                return element.scrollHeight > element.clientHeight; //|| element.scrollWidth > element.clientWidth;
+            }
+
+
+
+            //change string identifier to object
+            if (typeof element != "object") {
+                element = document.querySelector(element);
+            }
+
+            element.addEventListener("input", function () { autofit(element)});
+        };
+
+        initAutofit('h4');
+        initAutofit('h5');
+
+        window.addEventListener('resize', function(){
+            autofit(document.querySelector('h4'));
+            autofit(document.querySelector('h5'));
+        })
+        
+        autofit(document.querySelector('h4'));
+        autofit(document.querySelector('h5'));
+
+    </script>
+</body>
+
+</html>
