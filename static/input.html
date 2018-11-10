@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 
@@ -6,6 +7,7 @@
     <title>Xara Cloud's Input page</title>
     <link rel="stylesheet" type="text/css" href="./input.css">
     <link href="https://fonts.googleapis.com/css?family=Mountains+of+Christmas" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 </head>
 
 <body>
@@ -28,59 +30,39 @@
 
 
     <div id="header">
-        <h1 class="" id="backgroundInstructions" onclick="goToStep( 'background' )">Choose your E-card's Background:</h1>
-        <h1 class="hidden" id="cardInstructions" onclick="goToStep( 'card' )">Choose your card design:</h1>
-        <h1 class="hidden" id="infoInstructions">Include your message:</h1>
-        <a href="https://www.xara.com">
-            <div id="madeby">
-                <div>Made by the guys at </div>
-                <div id="xara-logo"></div>
-            </div>
-        </a>
+        </h1>
+        <h1 class="" id="backgroundInstructions">Firstly choose your E-card’s background:
+        </h1>
+        <h1 class="hidden" id="cardInstructions">Pick a card design</h1>
+        <h1 class="" id="backButton">Back
     </div>
 
-    <div class="button" id="toInfo" onclick="goToStep( 'info' )">Add your message...</div>
-    <div class="button" id="toCards" onclick="goToStep( 'card' )">Choose a card design...</div>
+    <div class="button disabled" id="toInfo" onclick="goToStep( 'info' )">Next, add your message</div>
+    <div class="button disabled" id="toCards" onclick="goToStep( 'card' )">Choose a card design...</div>
 
 
 
 
 
 
-    <form id="createCardForm" <!--action="fileupload" method="post" --> enctype="multipart/form-data">
+    <form id="createCardForm" <!--action="fileupload" method="post" --> enctype="multipart/form-data" autocomplete="off">
 
         <!-- information -->
         <div class="hidden" id="form">
 
-            <label id="addComp" for="imgupload">Click to add your company logo
+            <label id="addComp" for="imgupload">Click to add your company logo <i>(optional)</i>
             </label>
             <input id="imgupload" type="file" name="filetoupload">
             <img id="preview" src="">
 
 
-            <label id="emailLabel">Add your email address:</label>
-            <br>
+            <label id="emailLabel">Add your email address: <i>(required)</i></label>
             <input id="emailInput" type="text" name="email" value="" required>
-            <br>
-            <br>
 
-
+<!--
             <label id="compLabel">Your companies URL:</label>
-            <br>
             <input id="compInput" type="text" name="company" value="www.example.com">
-            <br>
-            <br>
-
-            <label id="messageLabel">Your message:</label>
-            <br>
-            <textarea id="message" name="message" rows="10" cols="30">I would just like to say thank you all for a fantastic year, and we look forward to a better one next year!
-
-                Boss,                        www.example.com
-                                    
-        </textarea>
-            <br>
-            <br>
-
+-->
             <label id="contactLabel">
                 <input id="contactCheck" type="checkbox" name="contact" checked> Yes I would like to hear about more stuff from
                 <a href="https://www.xara.com">Xara Cloud</a>
@@ -92,61 +74,61 @@
 
         <!-- card -->
         <div class="hidden" id="card-picker">
-            <input type="radio" name="card" value="christmas_trees_cover.png" id="christmas_trees_cover.png">
-            <label for="christmas_trees_cover.png" class="bg">
-                <div class="card-images" style="background-image:url(christmas_trees_cover.png)"></div>
-                <p class="bg-text">Christmas trees</p>
-            </label>
-            <input type="radio" name="card" value="merry_christmas_cover.png" id="merry_christmas_cover.png">
-            <label for="merry_christmas_cover.png" class="bg">
-                <div class="card-images" style="background-image:url(merry_christmas_cover.png)"></div>
-                <p class="bg-text">Merry christmas</p>
-            </label>
+               <input type="radio" name="card" value="christmas_trees1_cover.png" id="christmas_trees1_cover.png"> 
+                           <label for="christmas_trees1_cover.png" class="bg">    
+                               <div class="card-images" style="background-image:url(christmas_trees1_cover.png)"></div>    
+                               <p class="bg-text">Christmas trees1</p> 
+                           </label>   <input type="radio" name="card" value="christmas_trees2_cover.png" id="christmas_trees2_cover.png"> 
+                           <label for="christmas_trees2_cover.png" class="bg">    
+                               <div class="card-images" style="background-image:url(christmas_trees2_cover.png)"></div>    
+                               <p class="bg-text">Christmas trees2</p> 
+                           </label>   <input type="radio" name="card" value="christmas_trees_cover.png" id="christmas_trees_cover.png"> 
+                           <label for="christmas_trees_cover.png" class="bg">    
+                               <div class="card-images" style="background-image:url(christmas_trees_cover.png)"></div>    
+                               <p class="bg-text">Christmas trees</p> 
+                           </label>   <input type="radio" name="card" value="merry_christmas_cover.png" id="merry_christmas_cover.png"> 
+                           <label for="merry_christmas_cover.png" class="bg">    
+                               <div class="card-images" style="background-image:url(merry_christmas_cover.png)"></div>    
+                               <p class="bg-text">Merry christmas</p> 
+                           </label>
         </div>
 
 
         <!-- background -->
         <div class="" id="background-picker">
-            <input type="radio" name="background" value="bokeh_lights.jpg" id="bokeh_lights.jpg">
-            <label for="bokeh_lights.jpg" class="bg">
-                <div class="bg-images" style="background-image:url(bokeh_lights.jpg)"></div>
-                <p class="bg-text">Bokeh lights</p>
-            </label>
-            <input type="radio" name="background" value="christmas_presents.jpg" id="christmas_presents.jpg">
-            <label for="christmas_presents.jpg" class="bg">
-                <div class="bg-images" style="background-image:url(christmas_presents.jpg)"></div>
-                <p class="bg-text">Christmas presents</p>
-            </label>
-            <input type="radio" name="background" value="gold_bauble.jpg" id="gold_bauble.jpg">
-            <label for="gold_bauble.jpg" class="bg">
-                <div class="bg-images" style="background-image:url(gold_bauble.jpg)"></div>
-                <p class="bg-text">Gold bauble</p>
-            </label>
-            <input type="radio" name="background" value="gold_lights.jpg" id="gold_lights.jpg">
-            <label for="gold_lights.jpg" class="bg">
-                <div class="bg-images" style="background-image:url(gold_lights.jpg)"></div>
-                <p class="bg-text">Gold lights</p>
-            </label>
-            <input type="radio" name="background" value="merry_xmas.jpg" id="merry_xmas.jpg">
-            <label for="merry_xmas.jpg" class="bg">
-                <div class="bg-images" style="background-image:url(merry_xmas.jpg)"></div>
-                <p class="bg-text">Merry xmas</p>
-            </label>
-            <input type="radio" name="background" value="silver_bauble.jpg" id="silver_bauble.jpg">
-            <label for="silver_bauble.jpg" class="bg">
-                <div class="bg-images" style="background-image:url(silver_bauble.jpg)"></div>
-                <p class="bg-text">Silver bauble</p>
-            </label>
-            <input type="radio" name="background" value="white_bauble.jpg" id="white_bauble.jpg">
-            <label for="white_bauble.jpg" class="bg">
-                <div class="bg-images" style="background-image:url(white_bauble.jpg)"></div>
-                <p class="bg-text">White bauble</p>
-            </label>
-            <input type="radio" name="background" value="wood_presents.jpg" id="wood_presents.jpg">
-            <label for="wood_presents.jpg" class="bg">
-                <div class="bg-images" style="background-image:url(wood_presents.jpg)"></div>
-                <p class="bg-text">Wood presents</p>
-            </label>
+           <input type="radio" name="background" value="bokeh_lights.jpg" id="bokeh_lights.jpg">
+                       <label for="bokeh_lights.jpg" class="bg">    
+                       <div class="bg-images" style="background-image:url(bokeh_lights.jpg)"></div>    
+                       <p class="bg-text">Bokeh lights</p> 
+                       </label>   <input type="radio" name="background" value="christmas_presents.jpg" id="christmas_presents.jpg">
+                       <label for="christmas_presents.jpg" class="bg">    
+                       <div class="bg-images" style="background-image:url(christmas_presents.jpg)"></div>    
+                       <p class="bg-text">Christmas presents</p> 
+                       </label>   <input type="radio" name="background" value="gold_bauble.jpg" id="gold_bauble.jpg">
+                       <label for="gold_bauble.jpg" class="bg">    
+                       <div class="bg-images" style="background-image:url(gold_bauble.jpg)"></div>    
+                       <p class="bg-text">Gold bauble</p> 
+                       </label>   <input type="radio" name="background" value="gold_lights.jpg" id="gold_lights.jpg">
+                       <label for="gold_lights.jpg" class="bg">    
+                       <div class="bg-images" style="background-image:url(gold_lights.jpg)"></div>    
+                       <p class="bg-text">Gold lights</p> 
+                       </label>   <input type="radio" name="background" value="merry_xmas.jpg" id="merry_xmas.jpg">
+                       <label for="merry_xmas.jpg" class="bg">    
+                       <div class="bg-images" style="background-image:url(merry_xmas.jpg)"></div>    
+                       <p class="bg-text">Merry xmas</p> 
+                       </label>   <input type="radio" name="background" value="silver_bauble.jpg" id="silver_bauble.jpg">
+                       <label for="silver_bauble.jpg" class="bg">    
+                       <div class="bg-images" style="background-image:url(silver_bauble.jpg)"></div>    
+                       <p class="bg-text">Silver bauble</p> 
+                       </label>   <input type="radio" name="background" value="white_bauble.jpg" id="white_bauble.jpg">
+                       <label for="white_bauble.jpg" class="bg">    
+                       <div class="bg-images" style="background-image:url(white_bauble.jpg)"></div>    
+                       <p class="bg-text">White bauble</p> 
+                       </label>   <input type="radio" name="background" value="wood_presents.jpg" id="wood_presents.jpg">
+                       <label for="wood_presents.jpg" class="bg">    
+                       <div class="bg-images" style="background-image:url(wood_presents.jpg)"></div>    
+                       <p class="bg-text">Wood presents</p> 
+                       </label>
         </div>
 
 
@@ -169,6 +151,27 @@
 
 
     </div>
+    
+    <div id="welcomePanel">
+        <h1>Create and send your own E-card
+        </h1>
+        <img id="cardCover" src="./merry_christmas_cover.png">    
+
+        </img>
+        <div class="button" id="coverButton">Show some love</div>
+    </div>
+
+
+
+
+    <a href="https://www.xara.com"><div id="xara-logo"></div>
+    </a>
+
+    <footer>
+            <p><a href="#" target="_blank">Create your own design</a>   |   <a href="#" target="_blank">Tell a friend</a>   |   <a href="#" target="_blank">Signup to our newsletter</a></p>
+            <p id="made">… made by the team at <a href="https://www.xara.com" target="_blank"><b>xara.com</b></a></p>
+        </footer>
+    <!--SCRIPTS -->
 
     <script src="input.js"></script>
     <script>

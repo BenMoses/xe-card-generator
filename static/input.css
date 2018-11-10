@@ -1,5 +1,5 @@
 html {
-    font-family: open sans;
+    font-family: "Open Sans";
     font-size: 500;
     color: white;
     text-align : center;
@@ -17,20 +17,23 @@ body {
     height: 350px;
     background: linear-gradient(to bottom right,#007ec5 0,#08a5af 100%);
     
-    -webkit-box-shadow: 0px 10px 30px -9px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 10px 30px -9px rgba(0,0,0,0.75);
-    box-shadow: 0px 10px 30px -9px rgba(0,0,0,0.75);
+    -webkit-box-shadow:  0px 3px 0px 0px rgba(255,255,255,1);
+    -moz-box-shadow:  0px 3px 0px 0px rgba(255,255,255,1);
+    box-shadow: 0px 3px 0px 0px rgba(255,255,255,1);
+    background: -webkit-linear-gradient(-0deg, #007EC5 22%, #08A5AF 91%);
+    background: -o-linear-gradient(-0deg, #007EC5 22%, #08A5AF 91%);
+    background: linear-gradient(90deg, #007EC5 22%, #08A5AF 91%);"
 }
 
 #header h1 {
     position:absolute;
-    top: 50px;
+    top: 40px;
     left: 50px;
-    font-size: 24px;
+    font-size: 26px;
     font-weight: 400;
     transform-origin: top left;
     transition: transform 0.5s;
-    cursor: pointer;
+    margin-top:0px;
     
 }
 
@@ -39,15 +42,31 @@ body {
     pointer-events: none;
 }
 
-#backgroundInstructions.inactive {
+#backButton {
+    font-family: "Open Sans";
+    font-size: 18px !important;
+    opacity: 0.49;
+    text-decoration: underline;
+    position:absolute;
+    left: 0px;
+    top: 0px;
+    margin-top: 0px;
+    opacity:0;
+    cursor:pointer;
+}
 
-    transform : translateY(-50px) scale(0.7);
-    opacity:0.7;
+#backgroundInstructions.inactive {
+    opacity:0;
+}
+
+#cardInstructions {
+    left: 0px !important;
+    right: 0px; 
+    margin-left: auto;
+    margin-right:auto;
 }
 #cardInstructions.inactive {
-    
-    transform : translateY(-25px) scale(0.7);
-    opacity:0.7;
+    opacity:0;
 }
 
 #cardPreview {
@@ -125,10 +144,11 @@ body {
 */
 
 #xara-logo {
-    margin:auto;
-    margin-top: 5px;
-    width: 160px;
-    height: 60px;
+    position:absolute;
+    top:30px;
+    right:40px;
+    width: 108.7px;
+    height: 31.2px;
     background-image:url(./XCLOGO.png);
     background-size: contain;
     background-repeat: no-repeat;
@@ -150,7 +170,7 @@ body {
     border-radius: 50px;
     background-color:#9ac432;
     color: white;
-    font-size: 20px;
+    font-size: 18px;
     padding: 15px;
     padding-left: 30px;
     padding-right: 30px;
@@ -159,14 +179,20 @@ body {
     transform: translateX(-50%);
     cursor: pointer;
     text-decoration: none; /* no underline */
+    -webkit-box-shadow: 0px 0px 17px -1px rgba(0,0,0,0.32);
+    -moz-box-shadow: 0px 0px 17px -1px rgba(0,0,0,0.32);
+    box-shadow: 0px 0px 17px -1px rgba(0,0,0,0.32);
+    min-width: 200px;
 }
-
-
+.disabled {
+    background-color:grey;
+    pointer-events: none;
+}
 #background-picker {
     position:absolute;
     min-width: 100%;
     height: 150px;
-    top:120px;
+    top:100px;
     left:0px;
     white-space: nowrap;
     transition: opacity 0.5s, left 1s;
@@ -183,24 +209,27 @@ body {
 
 #background-picker > label{
     display: inline-block;
-    width: 213px;
+    width: 185px;
     height: 150px;
     /*background-color: black;*/
-    margin-left: 25px;
+    margin-right: 25px;
     cursor: pointer;
 }
 
 .bg-images {
     transition: border 0.25s, box-shadow 0.25s;
     width: 100%;
-    height: 120px;
-    border: 1px solid transparent;
+    height: 100px;
+    border: 2px solid transparent;
     background-size: 100%;
     background-repeat: no-repeat;
+    -webkit-box-shadow: 3px 3px 30px -9px rgba(0,0,0,0.55);
+    -moz-box-shadow: 3px 3px 30px -9px rgba(0,0,0,0.55);
+    box-shadow: 3px 3px 30px -9px rgba(0,0,0,0.55);
 
 }
 #background-picker > input:checked +label > .bg-images {
-    border:1px solid white;
+    border:2px solid white;
     -webkit-box-shadow: 7px 10px 30px -9px rgba(0,0,0,0.75);
 -moz-box-shadow: 7px 10px 30px -9px rgba(0,0,0,0.75);
 box-shadow: 7px 10px 30px -9px rgba(0,0,0,0.75);
@@ -211,6 +240,7 @@ box-shadow: 7px 10px 30px -9px rgba(0,0,0,0.75);
     font-weight: 500;
     width: 100%;
     transform: translateY(-50%);
+    display:none;
 }
 
 
@@ -222,7 +252,7 @@ box-shadow: 7px 10px 30px -9px rgba(0,0,0,0.75);
     position:absolute;
     min-width: 100%;
     height: 150px;
-    top:120px;
+    top:90px;
     left:0px;
     white-space: nowrap;
     transition: opacity 0.5s, left 1s;
@@ -239,24 +269,27 @@ box-shadow: 7px 10px 30px -9px rgba(0,0,0,0.75);
 
 #card-picker > label{
     display: inline-block;
-    width: 120px;
-    height: 150px;
+    width: 140px;
+    height: 140px;
     /*background-color: black;*/
-    margin-left: 25px;
+    margin-right: 25px;
     cursor: pointer;
 }
 
 .card-images {
     transition: border 0.25s, box-shadow 0.25s;
     width: 100%;
-    height: 120px;
-    border: 1px solid transparent;
+    height: 140px;
+    border: 2px solid transparent;
     background-repeat: no-repeat;
     background-size: contain;
+    -webkit-box-shadow: 3px 3px 30px -9px rgba(0,0,0,0.55);
+    -moz-box-shadow: 3px 3px 30px -9px rgba(0,0,0,0.55);
+    box-shadow: 3px 3px 30px -9px rgba(0,0,0,0.55);
 
 }
 #card-picker > input:checked +label > .card-images {
-    border:1px solid white;
+    border:2px solid white;
     -webkit-box-shadow: 7px 10px 30px -9px rgba(0,0,0,0.75);
 -moz-box-shadow: 7px 10px 30px -9px rgba(0,0,0,0.75);
 box-shadow: 7px 10px 30px -9px rgba(0,0,0,0.75);
@@ -289,8 +322,8 @@ box-shadow: 7px 10px 30px -9px rgba(0,0,0,0.75);
     width: 250px;
     height: 1em;
     border: 4px dashed white;
-    border-radius: 20px;
-    padding: 50px 20px;
+    border-radius: 20px;    
+    padding: 35px 20px 65px 20px;
 }
 
 #imgupload {
@@ -309,25 +342,29 @@ box-shadow: 7px 10px 30px -9px rgba(0,0,0,0.75);
     max-height: 150px;
     opacity: 0;
     pointer-events: none;
+    left: 200px;
+    transform: translateX(-50%);
 }
 
-#emailInput{
-    top: 35px;
+#emailInput{ 
+    top: 55px;
     position: absolute;
     left: 390px;
-    width: 200px;
+    width: 250px;
+    padding: 8px;
+    border: 2px solid #00659e;
 }
 
 #emailLabel {
     position: absolute;
-    top: 10px;
+    top: 20px;
     left: 390px;
 }
 
-#compLabel {
+#compLabel {    
     position: absolute;
+    top: 110px;
     left: 390px;
-    top: 70px;
 }
 #compInput {
     top: 95px;
@@ -353,7 +390,7 @@ box-shadow: 7px 10px 30px -9px rgba(0,0,0,0.75);
 
 #contactLabel {
     position: absolute;
-    top: 140px;
+    top: 105px;
     left: 390px;
 }
 
@@ -443,7 +480,7 @@ box-shadow: 7px 10px 30px -9px rgba(0,0,0,0.75);
     margin: auto;
     background-color: #f8f9fb;
     display: none;
-    font-family: open sans;
+    font-family: "Open Sans";
     color: #41414b;
     border-radius: 25px;
     border: 1px solid rgba(0,0,0,0.5);
@@ -490,4 +527,95 @@ h2 {
     top: 0px;
     width: 40px;
     cursor: pointer;
+}
+
+
+footer {
+    position:absolute;
+    left:0px;
+    bottom:0px;
+    height:40px;
+    width:100%;
+    background-color:black;
+    font-size: 12px;
+    font-family: "Open Sans";
+    color:white;
+
+}
+
+footer a {
+    color:white;
+    text-decoration: underline;
+}
+
+#made {
+    position:absolute;
+    bottom: 0px;
+    right:0px;
+    margin-right:40px;
+
+}
+
+#made a {
+    color : #2fa5e7;
+}
+
+#welcomePanel {
+    width: 100vw;
+    height:100vh;
+    background: linear-gradient(to bottom right,#007ec5 0,#08a5af 100%);
+    position:absolute;
+    left:0px;
+    top:0px;
+    transition: opacity 0.75s;
+    opacity:1;
+}
+
+#welcomePanel h1 {
+    font-size: 26px;
+    position:absolute;
+    left:0px;
+    top:0px;
+    right:0px;
+    margin:auto;
+    width: 280px;
+    font-family:"Open Sans";
+    font-weight: 400;
+    top: 40px;
+
+
+}
+
+#cardCover {
+    position:absolute;
+    top:150px;
+    height: 40vh;
+    width: auto;
+    left:0px;
+    right:0px;
+    margin:auto;
+    -webkit-box-shadow: 0px 0px 17px -1px rgba(0,0,0,0.32);
+    -moz-box-shadow: 0px 0px 17px -1px rgba(0,0,0,0.32);
+    box-shadow: 0px 0px 17px -1px rgba(0,0,0,0.32);
+}
+
+#welcomePanel .button {
+    
+    position:absolute;
+    border-radius: 50px;
+    background-color:#9ac432;
+    color: white;
+    font-size: 18px;
+    padding: 15px;
+    padding-left: 30px;
+    padding-right: 30px;
+    left: calc(50%);
+    transform: translateX(-50%);
+    cursor: pointer;
+    text-decoration: none; /* no underline */
+    -webkit-box-shadow: 0px 0px 17px -1px rgba(0,0,0,0.32);
+    -moz-box-shadow: 0px 0px 17px -1px rgba(0,0,0,0.32);
+    box-shadow: 0px 0px 17px -1px rgba(0,0,0,0.32);
+    min-width: 200px;
+    top: 65vh !important;
 }

@@ -66,6 +66,15 @@ app.get('/*', (req, res) => {
 
 app.post('/fileupload', (req, res) => {
 
+    /***
+     * { email: 'My email',
+  contact: 'on',
+  card: 'merry_christmas_cover.png',
+  background: 'gold_lights.jpg',
+  message: 'This is the main message',
+  signature: 'This is my sign<br>ature message' }
+     */
+
     var form = new formidable.IncomingForm();
     form.parse(req, function (err, fields, files) {
 

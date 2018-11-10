@@ -41,8 +41,12 @@ function moveToCenter(){
     this.cont.style.left = `${setValue}px`;
 };
 
-
+var goto = "background";
+var hasSelectedCard = false;
 function goToStep(option){
+    
+    document.getElementById("backButton").addEventListener('click', function(){goToStep(goto)});
+
     switch(option){
         case "background":
         //show bg
@@ -55,12 +59,14 @@ function goToStep(option){
         document.querySelector('#card-picker').classList = 'hidden';
 
         //hide info
-        document.querySelector('#infoInstructions').classList = "hidden";
         document.querySelector('#toSubmit').classList = "";
         document.querySelector('#form').classList = "hidden";
 
         //close card
         toggleCard(false);
+
+        //back button
+        document.querySelector('#backButton').style.opacity = 0;
 
 
         break;
@@ -74,15 +80,21 @@ function goToStep(option){
         document.querySelector('#cardInstructions').classList = '';
         document.querySelector('#card-picker').classList = '';
         document.querySelector('#toInfo').classList = 'button';
-
+        if( !hasSelectedCard ){
+            document.querySelector('#toInfo').classList.add('disabled');
+        }
         //hide info
         
-        document.querySelector('#infoInstructions').classList = "hidden";
         document.querySelector('#toSubmit').classList = "";
         document.querySelector('#form').classList = "hidden";
 
         //close card
         toggleCard(false);
+
+        //backbutton 
+        document.querySelector('#backButton').style.opacity = 0.49;
+        var goto = "background";
+        
 
         break;
         case "info":
@@ -98,12 +110,16 @@ function goToStep(option){
 
         //show info
         document.querySelector('#toSubmit').classList = "button";
-        document.querySelector('#infoInstructions').classList = "";
         document.querySelector('#form').classList = "";
         document.querySelector('#insideCard').style.opacity = 1;//first time going to the info, make the inside card visible;
 
         //open card
         toggleCard(true);
+
+        
+        //backbutton 
+        document.querySelector('#backButton').style.opacity = 0.49;
+        var goto = "card";
         break;
     }
 }
@@ -151,6 +167,7 @@ document.querySelectorAll('.bg-images').forEach(x => {
     x.addEventListener('click', function(){
         var imageLocation = this.parentElement.getAttribute("for");
         prv.style.backgroundImage = `url(${imageLocation})`;
+        document.querySelector('#toCards').classList.remove('disabled');
     })})
 
 
@@ -167,6 +184,8 @@ document.querySelectorAll('.card-images').forEach(x => {
         var insideRightLocation = imageLocation.replace('_cover', "_inside_right");
         cardprvInsideLeft.src = insideLeftLocation;
         cardprvInsideRight.src = insideRightLocation;
+        hasSelectedCard = true;
+        document.querySelector('#toInfo').classList.remove('disabled');
     })})
 
     var currentURL = "";
@@ -179,8 +198,18 @@ document.querySelectorAll('.card-images').forEach(x => {
 function sendForm(){
     var formData = new FormData(document.querySelector('#createCardForm'));
     var xhr = new XMLHttpRequest;
+    var emailInput = document.querySelector('#emailInput')
+    if(emailInput.value == ""){
+        alert('Please insert an email address.');
+        emailInput.style.backgroundColor = "lightyellow";
+        return;
+    }
     
     xhr.responseType = 'json';    
+    var cardBig = document.querySelector("h4").innerHTML;
+    var cardSig = document.querySelector("h5").innerHTML;
+    formData.append("message", cardBig);
+    formData.append("signature", cardSig);
     
     xhr.onload  = function() {
         currentURL = xhr.response.url;
@@ -243,3 +272,10 @@ function showCardLogo(src){
     logoShowing = !logoShowing;
 
 }
+
+
+document.querySelector('#coverButton').addEventListener('click', function(){
+    //document.querySelector('#welcomePanel').style.top = "-100vh";
+    document.querySelector('#welcomePanel').style.opacity = 0;
+    document.querySelector('#welcomePanel').style.pointerEvents = "none";
+})
