@@ -81,13 +81,13 @@ app.post('/fileupload', (req, res) => {
         console.log(fields);
         //console.log(files.filetoupload.path)
         /**
-         * { email: 'ben@xara.com',
-          company: 'www.example.com',
-          message: 'I would just like to say thank you all for a fantastic year, and we look forward to a better one next year!\r\n\r\n                Boss,                        www.example.com\r\n
-        \r\n        ',
-          contact: 'on',
-          card: 'merry_christmas_cover.png',
-          background: 'gold_lights.jpg' }
+{ email: 'ben@xara.com',
+  contact: 'on',
+  card: 'merry_christmas_cover.png',
+  background: 'wood_presents.jpg',
+  message: 'Click here to edit your message.\n             ',
+  signature: 'and don\'t forget to sign it!',
+  snowing: 'true' }
          */
 
 

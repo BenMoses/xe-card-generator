@@ -121,7 +121,9 @@ function goToStep(option){
         document.querySelector('#backButton').style.opacity = 0.49;
         var goto = "card";
         //turn on snow
-        stopSnow = initSnow && initSnow(document.querySelector('#cardPreview'));
+        if( !document.querySelector('#snowCanvas') ){//only add if snowcanvas exists
+            stopSnow = initSnow && initSnow(document.querySelector('#cardPreview'));
+        }
         break;
     }
 }
@@ -210,12 +212,14 @@ function sendForm(){
     xhr.responseType = 'json';    
     var cardBig = document.querySelector("h4").innerHTML;
     var cardSig = document.querySelector("h5").innerHTML;
+    var isSnowing = !!document.querySelector('#snowCanvas');
     formData.append("message", cardBig);
     formData.append("signature", cardSig);
+    formData.append("snowing", isSnowing);
     
     xhr.onload  = function() {
         currentURL = xhr.response.url;
-        document.querySelector('#cardURL').textContent = currentURL;
+        document.querySelector('#cardURL').textContent = window.location.href + currentURL;
         
         toggleShare(true);
 

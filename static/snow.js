@@ -6,7 +6,7 @@
 function initSnow(element) {
     var elObj = element.getBoundingClientRect();
     var canvas = document.createElement('canvas');
-    canvas.id = "effect-background";
+    canvas.id = "snowCanvas";
     canvas.width = elObj.width;
     canvas.height = elObj.height;
     canvas.style.position = "absolute";
@@ -34,7 +34,7 @@ function initSnow(element) {
 
 
 
-    var backgroundEl = document.getElementById("effect-background");
+    var backgroundEl = document.getElementById("snowCanvas");
     var bgContext = backgroundEl.getContext("2d");
     bgContext.canvas.width = window.innerWidth;
     bgContext.canvas.height = window.innerHeight;
