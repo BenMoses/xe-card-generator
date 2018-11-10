@@ -3,7 +3,9 @@ module.exports.generateInputPage = function generateInputPage(backgroundFiles, c
  * How to checked the first el ${checked ? (checked = !checked , "checked") : ""}
  */
 
+    function editor(){
 
+    }
 
 
     function backgroundsLoop() {
@@ -182,6 +184,7 @@ module.exports.generateInputPage = function generateInputPage(backgroundFiles, c
      <!--SCRIPTS -->
  
      <script src="input.js"></script>
+     <script src="snow.js"></script>
      <script>
          function updateCardContent() {
              var cardContent = document.querySelector('#insideCard');

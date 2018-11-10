@@ -120,10 +120,12 @@ function goToStep(option){
         //backbutton 
         document.querySelector('#backButton').style.opacity = 0.49;
         var goto = "card";
+        //turn on snow
+        stopSnow = initSnow && initSnow(document.querySelector('#cardPreview'));
         break;
     }
 }
-
+var stopSnow;
 
 function toggleCard(bool){
     if(bool){
