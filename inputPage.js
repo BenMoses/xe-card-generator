@@ -19,6 +19,7 @@ module.exports.generateInputPage = function generateInputPage(backgroundFiles, c
             };
         </style>`
     }
+    /*
     function effectScript(){
 
 
@@ -30,7 +31,7 @@ module.exports.generateInputPage = function generateInputPage(backgroundFiles, c
             bgCanvas.fillStyle = "#FF0000";
             bgCanvas.fillRect(0, 0, 80, 80);
         </script>`
-    }
+    }*/
 
 
     function backgroundsLoop() {
@@ -197,8 +198,9 @@ ${effectStyle()}
 
     </div>
 
-    ${effectScript()}
+    
     <script src="input.js"></script>
+    <script src="snow.js"></script>
 </body>
 </html>`
 

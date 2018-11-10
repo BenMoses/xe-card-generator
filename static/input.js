@@ -103,10 +103,13 @@ function goToStep(option){
 
         //open card
         toggleCard(true);
+
+        //turn on snow
+        stopSnow = initSnow && initSnow(document.querySelector('#cardPreview'));
         break;
     }
 }
-
+var stopSnow;
 
 function toggleCard(bool){
     if(bool){
