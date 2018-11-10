@@ -165,7 +165,7 @@ module.exports.generateInputPage = function generateInputPage(backgroundFiles, c
      <div id="welcomePanel">
          <h1>Create and send your own E-card
          </h1>
-         <img id="cardCover" src="./merry_christmas_cover.png">    
+         <img id="cardCover" src="./intro_card_cover.png">    
  
          </img>
          <div class="button" id="coverButton">Show some love</div>
