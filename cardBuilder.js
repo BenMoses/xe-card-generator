@@ -20,6 +20,20 @@ module.exports.card2Gen = function card2Gen(background, card, relativePath, mess
     <meta property="og:image"              content="${exportURL + this.cover}" />
     `;
 
+
+    this.xaraBranding = `
+    <a href="https://www.xara.com"><div id="xara-logo"></div>
+     </a>
+    
+    <footer>
+    <p><a href="https://www.xara.com/" target="_blank">Create your own design</a>   |   <a href="https://www.xara.com/" target="_blank">Tell a friend</a>   |   <a href="https://www.xara.com/" target="_blank">Signup to our newsletter</a></p>
+    <p id="made">… made by the team at <a href="https://www.xara.com" target="_blank"><b>xara.com</b></a></p>
+</footer>
+    
+    `;
+
+
+
     this.style = `
 
     body {
@@ -43,6 +57,49 @@ module.exports.card2Gen = function card2Gen(background, card, relativePath, mess
         margin: 0;
 
     }
+
+    #xara-logo {
+        position:absolute;
+        top:30px;
+        right:40px;
+        width: 108.7px;
+        height: 31.2px;
+        background-image:url(./XCLOGO.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+    }
+
+    
+footer {
+    position:absolute;
+    left:0px;
+    bottom:0px;
+    height:40px;
+    width:100%;
+    background-color:black;
+    font-size: 12px;
+    font-family: "Open Sans";
+    color:white;
+    text-align: center;
+}
+
+footer a {
+    color:white;
+    text-decoration: underline;
+}
+
+#made {
+    position:absolute;
+    bottom: 0px;
+    right:0px;
+    margin-right:40px;
+
+}
+
+#made a {
+    color : #2fa5e7;
+}
 
     #actualCardPreview-cover, #actualCardPreview-inside-left, #actualCardPreview-inside-right {
         position:absolute;
@@ -254,6 +311,8 @@ module.exports.card2Gen = function card2Gen(background, card, relativePath, mess
         <img id="actualCardPreview-cover" src=${this.cover}>
 
         </div>
+        ${this.xaraBranding}
+
         ${this.runScripts}
         </body>
         </html>`

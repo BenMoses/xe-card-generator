@@ -181,8 +181,8 @@ module.exports.generateInputPage = function generateInputPage(backgroundFiles, c
      </a>
  
      <footer>
-             <p><a href="#" target="_blank">Create your own design</a>   |   <a href="#" target="_blank">Tell a friend</a>   |   <a href="#" target="_blank">Signup to our newsletter</a></p>
-             <p id="made">… made by the team at <a href="https://www.xara.com" target="_blank"><b>xara.com</b></a></p>
+        <p><a href="https://www.xara.com/" target="_blank">Create your own design</a>   |   <a href="https://www.xara.com/" target="_blank">Tell a friend</a>   |   <a href="https://www.xara.com/" target="_blank">Signup to our newsletter</a></p>
+        <p id="made">… made by the team at <a href="https://www.xara.com" target="_blank"><b>xara.com</b></a></p>
          </footer>
      <!--SCRIPTS -->
  
