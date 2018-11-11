@@ -66,38 +66,12 @@ app.get('/*', (req, res) => {
 
 app.post('/fileupload', (req, res) => {
 
-    /***
-     * { email: 'My email',
-  contact: 'on',
-  card: 'merry_christmas_cover.png',
-  background: 'gold_lights.jpg',
-  message: 'This is the main message',
-  signature: 'This is my sign<br>ature message' }
-     */
-
     var form = new formidable.IncomingForm();
     form.parse(req, function (err, fields, files) {
 
         console.log(fields);
-        //console.log(files.filetoupload.path)
-        /**
-{ email: 'ben@xara.com',
-  contact: 'on',
-  card: 'merry_christmas_cover.png',
-  background: 'wood_presents.jpg',
-  message: 'Click here to edit your message.\n             ',
-  signature: 'and don\'t forget to sign it!',
-  snowing: 'true' }
-         */
 
-
-        var contact = !!fields.contact;
-        var email = fields.email;
-        var message = fields.message;
-        var company = fields.company;
-        var background = fields.background;
-        var card = fields.card;
-
+         //handle the logo
         if (files.filetoupload && files.filetoupload.path) {
             //if user submitted an image
             var oldpath = files.filetoupload.path;
@@ -105,8 +79,25 @@ app.post('/fileupload', (req, res) => {
             var newpath = __dirname + '/static/' + logoName;
             var relativePath = files.filetoupload.name ? "../" + logoName : "";
         }
+        //now use relativePath for the logo
+
+        var contact = !!fields.contact;
+        var email = fields.email;
+        var message = fields.message;
+        var signature = fields.signature;
+        var background = fields.background;
+        var card = fields.card;
+        var isSnowing = !!fields.snowing;
+
+        /*switch(true){ //this will be required when we offer 2+designs
+            case true:
+            var {card2Gen} = require('./cardBuilder.js');
+
+            break;
+        }*/
+        
         var {card2Gen} = require('./cardBuilder.js');
-        const source = card2Gen(background, card, relativePath, message, company);
+        const source = card2Gen(background, card, relativePath, message, signature, isSnowing);
         const uniq = makeid();
 
         fs.mkdirSync(uniq);

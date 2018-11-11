@@ -69,7 +69,7 @@ module.exports.generateInputPage = function generateInputPage(backgroundFiles, c
  <body>
  
      <div id="cardPreview">
- 
+        <div><!-- This div acts as a the first child for the snow to be in front of --></div>
          <img id="actualCardPreview-inside-right"></img>
          <div id="insideCard">
              <h4 contentEditable>Click here to edit your message.
@@ -202,16 +202,26 @@ module.exports.generateInputPage = function generateInputPage(backgroundFiles, c
                  //if there is no text, exit immediately
                  return;
              }
+
+             element.innerText == element.innerText;
+             
              var size = parseInt(getComputedStyle(element).fontSize); //cache size
  
              //increase till it is overflowing
-             while (!isOverflown(element)) {
+             var adjust = 0;
+             while (!isOverflown(element) && adjust < 50) {
                  element.style.fontSize = (size++) + "px";
+                 element.style.display = 'none';
+                 element.style.display = 'block';
+                 adjust++;
              }
  
              //decrease until it isn't overflowing
-             while (isOverflown(element)) {
+             while (isOverflown(element) && adjust < 50) {
                  element.style.fontSize = (size--) + "px";
+                 element.style.display = 'none';
+                 element.style.display = 'block';
+                 adjust++;
              };
          }
  
@@ -229,6 +239,10 @@ module.exports.generateInputPage = function generateInputPage(backgroundFiles, c
                  element = document.querySelector(element);
              }
  
+             element.addEventListener("paste", function (ev) { 
+                 ev.preventDefault();
+             });
+
              element.addEventListener("input", function () { autofit(element)});
          };
  

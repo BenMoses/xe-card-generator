@@ -1,44 +1,40 @@
 
-
-module.exports.card2Gen = function card2Gen(background, card, relativePath, message, company) {
+//card2Gen(background, card, relativePath, message, signature, isSnowing);
+module.exports.card2Gen = function card2Gen(background, card, relativePath, message, signature, isSnowing){
 
     this.background = background
     this.cover = "../" + card;
     this.insideLeft = this.cover.replace('_cover', "_inside_left");
     this.insideRight = this.cover.replace('_cover', "_inside_right");
-    this.text = message;
-    this.url = company;
-    this.logo = relativePath;
+    this.message = message;
+    this.signature = signature;
+    //this.url = company;
+    this.logo = relativePath || "";
 
     this.style = `
 
     body {
-        user-select : none;
-    }
-
-    #background {
-        position: absolute;
-        left: 0px;
-        top: 0px;
+        position:absolute;
+        left:0px;
+        top:0px;
+        width:100%;
         height: 100%;
-        width: 100%;
+        margin: 0;
+        overflow:hidden;
+    }
+    #background {
+        position:absolute;
+        left:0px;
+        top:0px;
+        width:100%;
+        height: 100%;
         background-repeat: no-repeat;
         background-size: cover;
+        background-position: 50%;
+        margin: 0;
+
     }
 
-    #cover {
-        position: absolute;
-        top: 0px;
-        right: 0px;
-        bottom: 0px;
-        left: 0px;
-        margin: auto;
-        height: 75%;
-        transition: all 1s;
-        transform-origin: top left;
-        backface-visibility: hidden;
-    }
-    
     #actualCardPreview-cover, #actualCardPreview-inside-left, #actualCardPreview-inside-right {
         position:absolute;
         top: 0px;
@@ -51,97 +47,80 @@ module.exports.card2Gen = function card2Gen(background, card, relativePath, mess
         transform-origin: top left;
         backface-visibility: hidden;
     }
-    
-    #actualCardPreview-inside-left{
-        transform-origin: top right;
-        transform: translateX(calc(-100% + 1px)) rotateY(180deg);
-    
-    
-    }
-    
+
+        
     #actualCardPreview-cover.open {
         transform : translateX(50%) rotateY(180deg) !important;
-    
+
     }
-    
+
+    #actualCardPreview-inside-left {
+        transform : translateX(-100%) rotateY(180deg);
+        transform-origin: top right;
+    }
     #actualCardPreview-inside-left.open {
         transform: translateX(calc(-50% + 1px)) rotateY(360deg);
         border-right: 1px solid rgba(0,0,0,0.3);
-    
+
     }
-    
     #actualCardPreview-inside-right.open {
         transform: translateX(calc(50% - 1px));
     
     }
 
-    #text{
+
+
+    #insideCard {
+        position:absolute;
+        left:0px;
+        bottom:0px;
+        right:0px;
+        top:0px;
+        margin:auto;
+        height: 75%;
+        transition: transform 1s;
+        opacity: 0;
+    }
+    
+    #insideCard.open {
+        transform: translateX(calc(50% - 1px));
+    }
+    
+    #insideCard h4, #insideCard h5{
+        font-family: 'Mountains of Christmas', cursive;
+        font-size: 96px;
+        height: 42%;
+        margin-block-start: 0;
+        margin-block-end: 0;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        margin: 5%;
+        margin-top: 10%;
+        color: #b01c29;
+        text-align: center;
+    }
+    #insideCard h5{
+        font-size: 36px;
+        height: 15%;
+        bottom: calc(5% + 100px);
         position: absolute;
-        top: 0px;
-        right: 0px;
-        bottom: 0px;
+        width:90%;
+        margin-bottom: 0px;
+        margin-top:0px;
+    }
+    
+    
+    #insideCard img{
+        height: 100px;
+        width: auto;
+        max-width: 100%;
+        bottom: 5%;
+        position: absolute;
         left: 0px;
-        margin: auto;
-        height: 60vh;
-        width: 60vh;
-        transition: all 1s;
-        transform-origin: top left;
-        backface-visibility: hidden;
-        font-family: 'Mountains of Christmas', cursive;
-        pointer-events: none;
-        font-size: 3.5vh;
-    }
-
-    #text.open {
-        transform: translateX(37.5vh);
-    }
-
-    #logo {
-        position: absolute;
-        top: 0px;
         right: 0px;
-        bottom: 0px;
-        left: 400px;
         margin: auto;
-        width: 20vh;
-        transition: all 1s;
-        transform-origin: top left;
-        backface-visibility: hidden;
-        font-family: 'Mountains of Christmas', cursive;
-        pointer-events: none;
-        font-size: 3.5vh;
-        /* text-align: right; */
-        transform: translateY(25vh);
+        /*display:none;*/
     }
-    #logo.open {
-        transform: translateX(37.5vh) translateY(25vh);
-
-    }
-
-    #company {
-        position: absolute;
-        top: 0px;
-        right: 0px;
-        bottom: 0px;
-        left: 0px;
-        margin: auto;
-        height: 60vh;
-        width: 60vh;
-        transition: all 1s;
-        transform-origin: top left;
-        backface-visibility: hidden;
-        font-family: 'Mountains of Christmas', cursive;
-        pointer-events: none;
-        font-size: 3.5vh;
-        text-align: right;
-        transform: translateY(45vh);
-    }
-
-    #company.open{
-        transform: translateX(37.5vh) translateY(45vh);
-
-    }
-
     `;
 
     this.script = `
@@ -151,20 +130,84 @@ module.exports.card2Gen = function card2Gen(background, card, relativePath, mess
             document.querySelector('#actualCardPreview-cover').classList.add("open");
             document.querySelector('#actualCardPreview-inside-left').classList.add("open");
             document.querySelector('#actualCardPreview-inside-right').classList.add("open");
-            document.querySelector('#text').classList.add("open");
-            document.querySelector('#logo').classList.add("open");
-            document.querySelector('#company').classList.add("open");
+            document.querySelector('#insideCard').classList.add("open");
+            document.querySelector('#insideCard').style.opacity = 1 ;
         }else{
             document.querySelector('#actualCardPreview-cover').classList.remove("open");
             document.querySelector('#actualCardPreview-inside-left').classList.remove("open");
             document.querySelector('#actualCardPreview-inside-right').classList.remove("open");
-            document.querySelector('#text').classList.remove("open");
-            document.querySelector('#logo').classList.remove("open");
-            document.querySelector('#company').classList.remove("open");
+            document.querySelector('#insideCard').classList.remove("open");
         }
         openCard = !openCard;
+    };`
+
+    this.runScripts = `
+    <script src="snow.js"> </script>
+    <script>
+    function updateCardContent() {
+        var cardContent = document.querySelector('#insideCard');
+        cardContent.style.width = "" + cardContent.getBoundingClientRect().height + "px";
     }
-    `
+    updateCardContent();
+    window.addEventListener('resize', updateCardContent)
+</script>
+<script>
+ 
+ 
+         function autofit(element) {
+             if(element.innerText == ""){
+                 //if there is no text, exit immediately
+                 return;
+             }
+             var size = parseInt(getComputedStyle(element).fontSize); //cache size
+ 
+             //increase till it is overflowing
+             while (!isOverflown(element)) {
+                 element.style.fontSize = (size++) + "px";
+             }
+ 
+             //decrease until it isn't overflowing
+             while (isOverflown(element)) {
+                 element.style.fontSize = (size--) + "px";
+             };
+         }
+         
+         isOverflown = function (element) {
+            return element.scrollHeight > element.clientHeight; //|| element.scrollWidth > element.clientWidth;
+        }
+ 
+         window.addEventListener('resize', function(){
+             autofit(document.querySelector('h4'));
+             autofit(document.querySelector('h5'));
+         })
+         
+         autofit(document.querySelector('h4'));
+         autofit(document.querySelector('h5'));
+ 
+     </script>
+
+     <script>
+     
+        var cardState = false;
+        document.querySelector('#actualCardPreview-inside-left').addEventListener('mousedown', function(ev){ 
+            ev.preventDefault();
+            toggleCard(cardState)
+            cardState = !cardState;
+        });
+        
+        document.querySelector('#actualCardPreview-cover').addEventListener('mousedown', function(ev){ 
+            ev.preventDefault();
+            toggleCard(cardState)
+            cardState = !cardState;
+        });
+     
+
+     </script>
+
+     ${isSnowing ? "<script> initSnow(document.querySelector('body')); </script>" : ""}
+
+
+`
 
 
     return `<!DOCTYPE html>
@@ -182,24 +225,24 @@ module.exports.card2Gen = function card2Gen(background, card, relativePath, mess
         <link href="https://fonts.googleapis.com/css?family=Mountains+of+Christmas" rel="stylesheet">
         </head>
         
-        <body > 
-        
-        <div id="background"style="background-image:url(${this.background})"></div>
-            <div id="cardPreview">
+        <body>
+        <div id="background" style="background-image: url(${background});"></div>
+ 
+        <img id="actualCardPreview-inside-right" src="${this.insideRight}">
 
-                <img id="actualCardPreview-inside-right" src="${this.insideRight}" onclick="toggleCard()">
-                <div id="text">${this.text}</div>
-                <img id="logo" src="${this.logo}"></img>
-                <div id="company">${this.company}</div>
-
-
-                <img id="actualCardPreview-inside-left" src="${this.insideLeft}" onclick="toggleCard()"></img>
-                <img id="actualCardPreview-cover" src="${this.cover}" onclick="toggleCard()"></img>
-            </div>
-            
+        <div id="insideCard">
+            <h4 style="font-size: 48px;">${this.message}
+            </h4>
+            <h5 style="font-size: 31px;">${this.signature}</h5>
+                ${relativePath ? "<img id='logoPreview' src="+relativePath+">" : ""}    
+        </div>
 
 
-            
+        <img id="actualCardPreview-inside-left" src="${this.insideLeft}">
+        <img id="actualCardPreview-cover" src=${this.cover}>
+
+        </div>
+        ${this.runScripts}
         </body>
         </html>`
 

@@ -3,7 +3,7 @@
 //middleground should be stationary on the cards
 //foreground should be stationary on the screen
 
-function initSnow(element) {
+function initSnow(element) { //element is the parentNode of the snow div
     var elObj = element.getBoundingClientRect();
     var canvas = document.createElement('canvas');
     canvas.id = "snowCanvas";
@@ -15,8 +15,10 @@ function initSnow(element) {
     canvas.style.pointerEvents = "none";
     element.style.overflow = "hidden";
 
-    element.insertBefore(canvas, element.firstChild); //insert at the back
+    element.insertBefore(canvas, element.firstElementChild.nextSibling); //insert in front of background
 
+    var img = new Image();
+    img.src = './snow_sprite.png';
 
 
     function generateSnowObj() {
@@ -124,8 +126,6 @@ function initSnow(element) {
             /**
              * Sprit is 280 * 40, and includes 7 sprites, so each one is 40*40 and positioned at n-1 * 40 - x and 0 y
              */
-            var img = new Image();
-            img.src = './snow_sprite.png';
 
             var spriteWidth = 40, spriteHeight = 40, pixelsLeft = 40 * currentFlake.radius, pixelsTop = 0;
             bgContext.drawImage(img, pixelsLeft, pixelsTop, spriteWidth, spriteHeight, currentFlake.xPos, currentFlake.yPos, spriteWidth, spriteHeight);

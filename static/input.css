@@ -53,6 +53,7 @@ body {
     margin-top: 0px;
     opacity:0;
     cursor:pointer;
+    pointer-events: none;
 }
 
 #backgroundInstructions.inactive {
@@ -74,7 +75,7 @@ body {
     left:0px;
     top:350px;
     width:100%;
-    height: calc(100vh - 350px);
+    bottom:40px;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 50%;
@@ -111,7 +112,7 @@ body {
 #insideCard h5{
     font-size: 36px;
     height: 15%;
-    bottom: calc(5% + 100px);
+    top: 57%;
     position: absolute;
     width:90%;
     margin-bottom: 0px;
@@ -120,10 +121,10 @@ body {
 
 
 #insideCard img{
-    height: 100px;
+    height: 22%;
     width: auto;
     max-width: 100%;
-    bottom: 5%;
+    top: 72%;
     position: absolute;
     left: 0px;
     right: 0px;
@@ -324,6 +325,7 @@ box-shadow: 7px 10px 30px -9px rgba(0,0,0,0.75);
     border: 4px dashed white;
     border-radius: 20px;    
     padding: 35px 20px 65px 20px;
+    cursor: pointer;
 }
 
 #imgupload {
@@ -392,6 +394,7 @@ box-shadow: 7px 10px 30px -9px rgba(0,0,0,0.75);
     position: absolute;
     top: 105px;
     left: 390px;
+    cursor:pointer;
 }
 
 #cover {

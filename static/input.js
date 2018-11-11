@@ -67,6 +67,7 @@ function goToStep(option){
 
         //back button
         document.querySelector('#backButton').style.opacity = 0;
+        document.querySelector('#backButton').style.pointerEvents= "none";
 
 
         break;
@@ -93,6 +94,7 @@ function goToStep(option){
 
         //backbutton 
         document.querySelector('#backButton').style.opacity = 0.49;
+        document.querySelector('#backButton').style.pointerEvents= "auto";
         var goto = "background";
         
 
@@ -119,6 +121,7 @@ function goToStep(option){
         
         //backbutton 
         document.querySelector('#backButton').style.opacity = 0.49;
+        document.querySelector('#backButton').style.pointerEvents= "auto";
         var goto = "card";
         //turn on snow
         if( !document.querySelector('#snowCanvas') ){//only add if snowcanvas exists
