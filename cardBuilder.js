@@ -132,6 +132,8 @@ module.exports.card2Gen = function card2Gen(background, card, relativePath, mess
             document.querySelector('#actualCardPreview-inside-right').classList.add("open");
             document.querySelector('#insideCard').classList.add("open");
             document.querySelector('#insideCard').style.opacity = 1 ;
+            autofit(document.querySelector('h4'));
+            autofit(document.querySelector('h5'));
         }else{
             document.querySelector('#actualCardPreview-cover').classList.remove("open");
             document.querySelector('#actualCardPreview-inside-left').classList.remove("open");
