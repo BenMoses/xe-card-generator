@@ -200,6 +200,15 @@ document.querySelectorAll('.card-images').forEach(x => {
     document.querySelector('#cardURL').addEventListener('click', function(){
         window.open("/" + currentURL,'_blank');
     })
+    document.querySelector('#facebook').addEventListener('click', function(){
+        var atag = document.querySelector('#facebook').parentNode;
+        currentURL = "https://www.facebook.com/sharer/sharer.php?u="+"http%3A//benjaminmoses.co.uk/socialTest/1/"; //currentURL
+
+        atag.setAttribute("target", "_blank");
+        atag.setAttribute("href", `${currentURL}`);
+        atag.setAttribute("OnClick", `window.open("${currentURL}",'targetWindow','toolbar=no,location=0,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=250'); return false;`);
+
+})
 
 
 function sendForm(){
@@ -223,10 +232,7 @@ function sendForm(){
     xhr.onload  = function() {
         currentURL = xhr.response.url;
         document.querySelector('#cardURL').textContent = window.location.href + currentURL;
-        
         toggleShare(true);
-
-        //alert(xhr.response);
 
     };
 

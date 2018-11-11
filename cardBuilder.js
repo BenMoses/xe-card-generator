@@ -1,6 +1,6 @@
 
 //card2Gen(background, card, relativePath, message, signature, isSnowing);
-module.exports.card2Gen = function card2Gen(background, card, relativePath, message, signature, isSnowing){
+module.exports.card2Gen = function card2Gen(background, card, relativePath, message, signature, isSnowing, exportURL){
 
     this.background = background
     this.cover = "../" + card;
@@ -10,6 +10,15 @@ module.exports.card2Gen = function card2Gen(background, card, relativePath, mess
     this.signature = signature;
     //this.url = company;
     this.logo = relativePath || "";
+    
+
+    this.fbOpenGraph = `
+    <meta property="og:url"                content="${exportURL}" />
+    <meta property="og:type"               content="website" />
+    <meta property="og:title"              content="My E-card" />
+    <meta property="og:description"        content="${this.message}" />
+    <meta property="og:image"              content="${exportURL + this.cover}" />
+    `;
 
     this.style = `
 
@@ -225,6 +234,7 @@ module.exports.card2Gen = function card2Gen(background, card, relativePath, mess
         ${this.script}
         </script>
         <link href="https://fonts.googleapis.com/css?family=Mountains+of+Christmas" rel="stylesheet">
+        ${this.fbOpenGraph};
         </head>
         
         <body>

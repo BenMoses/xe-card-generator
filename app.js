@@ -80,7 +80,6 @@ app.post('/fileupload', (req, res) => {
             var relativePath = files.filetoupload.name ? "../" + logoName : "";
         }
         //now use relativePath for the logo
-
         var contact = !!fields.contact;
         var email = fields.email;
         var message = fields.message;
@@ -96,9 +95,10 @@ app.post('/fileupload', (req, res) => {
             break;
         }*/
         
-        var {card2Gen} = require('./cardBuilder.js');
-        const source = card2Gen(background, card, relativePath, message, signature, isSnowing);
         const uniq = makeid();
+        var exportURL = __dirname + "/" + uniq + "/index.html";
+        var {card2Gen} = require('./cardBuilder.js');
+        const source = card2Gen(background, card, relativePath, message, signature, isSnowing, exportURL);
 
         fs.mkdirSync(uniq);
 

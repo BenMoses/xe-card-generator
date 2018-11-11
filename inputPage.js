@@ -152,9 +152,12 @@ module.exports.generateInputPage = function generateInputPage(backgroundFiles, c
          <p id="publishedTo">Your e-card is published to here:</p>
          <p id="cardURL">UNDEFINED</p>
          <hr>
-         <p id="shareTo">Share to: not yet supported</p>
-         <div id="facebook"></div>
-         <div id="twitter"></div>
+         <p id="shareTo">
+            Share to: 
+         </p>
+         
+         <a><div id="facebook" class="social" title="Share to Facebook!"></div> </a>
+         <a><div id="twitter" class="social" title="Share to Twitter!"></div> </a>
  
          <hr>
          <p id="emailTo">EMAIL: not yet supported</p>
