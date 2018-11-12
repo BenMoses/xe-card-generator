@@ -166,7 +166,26 @@ module.exports.generateInputPage = function generateInputPage(backgroundFiles, c
          <a><div id="pinterest" class="social" title="Share to Pinterest!"></div> </a>
  
          <hr>
-         <p id="emailTo">EMAIL: not yet supported</p>
+         <p id="emailTo">Email:</p>
+         <form id="sendEmailForm">
+            <input class="shareForm email" type="email" name="email1" placeholder="#1 Email">
+            <input class="shareForm name" type="text" name="name1" placeholder="#1 Name"><br>
+
+            <input class="shareForm email" type="email" name="email2" placeholder="#2 Email">
+            <input class="shareForm name" type="text" name="name2" placeholder="#2 Name"><br>
+
+            <input class="shareForm email" type="email" name="email3" placeholder="#3 Email">
+            <input class="shareForm name" type="text" name="name3" placeholder="#3 Name"><br>
+
+            <input class="shareForm email" type="email" name="email4" placeholder="#4 Email">
+            <input class="shareForm name" type="text" name="name4" placeholder="#4 Name"><br>
+
+            <input class="shareForm email" type="email" name="email5" placeholder="#5 Email">
+            <input class="shareForm name" type="text" name="name5" placeholder="#5 Name"><br>
+
+            <p id="emailText">Currently we only allow you to share to 5 emails at once. You could share via social media or using the Link. <br> We will change the email name to be the names you entered.</p>            
+            <div id="sendEmailButton" onclick="sendEmails()">Send</div>
+        </form>
  
  
      </div>

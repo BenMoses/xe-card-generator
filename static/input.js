@@ -263,6 +263,30 @@ function sendForm(){
     xhr.send(formData);
 }
 
+function sendEmails(){
+    var formData = new FormData(document.querySelector('#sendEmailForm'));
+    var xhr = new XMLHttpRequest;
+    var firstInput = document.querySelector('#sendEmailForm > input');
+
+    if(firstInput.value == ""){
+        alert('Please insert at least one email address.');
+        firstInput.style.backgroundColor = "lightyellow";
+        return;
+    }
+    
+    xhr.responseType = 'json';
+    
+    xhr.onload  = function() {
+        document.querySelector('#sendEmailButton').textContent = "Emails sent"
+    };
+
+    xhr.open('post', '/sendEmails', true);
+    xhr.send(formData);
+}
+
+
+
+
 var share = document.querySelector('#sharePanel');
 var cover = document.querySelector('#cover');
 function toggleShare(bool){

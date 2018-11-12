@@ -374,6 +374,29 @@ box-shadow: 7px 10px 30px -9px rgba(0,0,0,0.75);
     border: 2px solid #00659e;
 }
 
+#emailText {
+    font-size: 12px;
+    font-style: italic;
+    padding: 00px 50px;
+}
+
+#sendEmailButton {
+    border-radius: 50px;
+    background-color: #9ac432;
+    color: white;
+    font-size: 18px;
+    padding: 15px;
+    cursor: pointer;
+    text-decoration: none;
+    -webkit-box-shadow: 0px 0px 17px -1px rgba(0,0,0,0.32);
+    -moz-box-shadow: 0px 0px 17px -1px rgba(0,0,0,0.32);
+    box-shadow: 0px 0px 17px -1px rgba(0,0,0,0.32);
+    min-width: 200px;
+    margin: 20px auto !important;
+    display: inline-block;
+
+}
+
 #emailLabel {
     position: absolute;
     top: 20px;

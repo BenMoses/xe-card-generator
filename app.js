@@ -125,15 +125,29 @@ app.post('/fileupload', (req, res) => {
 
     })
 });
-/*
-{ email: '',
-company: 'www.example.com',
-message: 'I would just like to say thank you all for a fantastic year, and we look forward to a better one next year!\r\n\r\n                Boss,                        www.example.com\r\n
-\r\n        ',
-contact: 'on',
-card: 'christmas_trees_cover.png',
-background: 'christmas_presents.jpg' }
-*/
+
+
+
+
+
+
+
+
+
+
+
+
+app.post('/sendEmails', (req, res) => {
+
+    var form = new formidable.IncomingForm();
+    form.parse(req, function (err, fields, files) {
+
+        console.log(fields);        
+        res.setHeader('Content-Type', 'application/json');
+        var send = {};
+        res.send(send);
+    })
+});
 
 
 
