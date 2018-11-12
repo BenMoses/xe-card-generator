@@ -25,6 +25,16 @@ body {
     background: linear-gradient(90deg, #007EC5 22%, #08A5AF 91%);"
 }
 
+.overflowHandler {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width: 100%;
+    height:350px;
+    overflow:hidden;
+    pointer-events: none;
+}
+
 #header h1 {
     position:absolute;
     top: 40px;
@@ -39,7 +49,7 @@ body {
 
 .hidden {
     opacity: 0;
-    pointer-events: none;
+    pointer-events: none !important;
 }
 
 #backButton {
@@ -91,8 +101,12 @@ body {
     height: 75%;
     transition: transform 1s;
     opacity: 0;
-}
-
+    max-width: 100vw;
+}/*
+[contenteditable]:focus {
+    outline: dashed 2px red; 
+    }
+*/
 #insideCard.open {
     transform: translateX(calc(50% - 1px));
 }
@@ -197,6 +211,7 @@ body {
     left:0px;
     white-space: nowrap;
     transition: opacity 0.5s, left 1s;
+    pointer-events: all;
 }
 
 
@@ -257,6 +272,7 @@ box-shadow: 7px 10px 30px -9px rgba(0,0,0,0.75);
     left:0px;
     white-space: nowrap;
     transition: opacity 0.5s, left 1s;
+    pointer-events: all;
 }
 
 
@@ -419,6 +435,7 @@ box-shadow: 7px 10px 30px -9px rgba(0,0,0,0.75);
     transition: all 1s;
     transform-origin: top left;
     backface-visibility: hidden;
+    max-width: 100vw;
 }
 
 #actualCardPreview-inside-left{
@@ -632,3 +649,22 @@ footer a {
     background-image: url(./twitter_icon.png);
     left:170px;
 }
+
+
+img {
+    display: none;
+}
+
+
+img[src] {
+   display: block;
+ }
+
+
+/*Max aspect ratio*/
+@media (max-aspect-ratio: 1/1) {
+    #actualCardPreview-cover, #actualCardPreview-inside-left, #actualCardPreview-inside-right, #insideCard {
+        height: 47vw;
+        width: 47vw;
+    }
+  }

@@ -129,16 +129,20 @@ module.exports.generateInputPage = function generateInputPage(backgroundFiles, c
          <div class="button hidden" id="toSubmit" onclick="sendForm()">Get your e-card</div>
  
          <!-- card -->
+         <div class="overflowHandler">
          <div class="hidden" id="card-picker">
                 
               ${cardsLoop()}
          </div>
+         </div>
  
  
          <!-- background -->
+         <div class="overflowHandler">
          <div class="" id="background-picker">
             
          ${backgroundsLoop()}
+         </div>
          </div>
  
  
@@ -212,7 +216,7 @@ module.exports.generateInputPage = function generateInputPage(backgroundFiles, c
  
              //increase till it is overflowing
              var adjust = 0;
-             while (!isOverflown(element) && adjust < 50) {
+             while (!isOverflown(element) && adjust < 100) {
                  element.style.fontSize = (size++) + "px";
                  element.style.display = 'none';
                  element.style.display = 'block';
@@ -220,7 +224,7 @@ module.exports.generateInputPage = function generateInputPage(backgroundFiles, c
              }
  
              //decrease until it isn't overflowing
-             while (isOverflown(element) && adjust < 50) {
+             while (isOverflown(element) && adjust < 100) {
                  element.style.fontSize = (size--) + "px";
                  element.style.display = 'none';
                  element.style.display = 'block';
