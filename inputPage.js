@@ -162,6 +162,8 @@ module.exports.generateInputPage = function generateInputPage(backgroundFiles, c
          
          <a><div id="facebook" class="social" title="Share to Facebook!"></div> </a>
          <a><div id="twitter" class="social" title="Share to Twitter!"></div> </a>
+         <a><div id="linkedin" class="social" title="Share to LinkedIn!"></div> </a>
+         <a><div id="pinterest" class="social" title="Share to Pinterest!"></div> </a>
  
          <hr>
          <p id="emailTo">EMAIL: not yet supported</p>

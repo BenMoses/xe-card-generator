@@ -119,7 +119,7 @@ app.post('/fileupload', (req, res) => {
 
         
         res.setHeader('Content-Type', 'application/json');
-        var send = {url : uniq};
+        var send = {url : uniq, message: ""+message};
         console.log(send.url);
         res.send(send);
 

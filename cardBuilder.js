@@ -20,6 +20,12 @@ module.exports.card2Gen = function card2Gen(background, card, relativePath, mess
     <meta property="og:image"              content="${exportURL + this.cover}" />
     `;
 
+    this.twitter = `
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="My E-card">
+    <meta name="twitter:description" content="${this.message}" >
+    <meta name="twitter:image" content="${exportURL + this.cover}">`
+
 
     this.xaraBranding = `
     <a href="https://www.xara.com"><div id="xara-logo"></div>

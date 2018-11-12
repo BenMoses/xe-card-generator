@@ -512,6 +512,10 @@ h2 {
     margin-top: 20px;
     margin-bottom: 15px;
 }
+#shareTo{
+    
+    margin-bottom: 20px !important;
+}
 
 #cardURL {
     background-color: #eee;
@@ -648,6 +652,15 @@ footer a {
 #twitter {
     background-image: url(./twitter_icon.png);
     left:170px;
+}
+
+#linkedin {
+    background-image: url(./linkedin_icon.png);
+    left:230px;
+}
+#pinterest {
+    background-image: url(./pinterest_icon.png);
+    left:290px;
 }
 
 
